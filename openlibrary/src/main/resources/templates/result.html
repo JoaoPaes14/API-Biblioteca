@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="pt-BR" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resultado da Busca</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f7f9;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h1 {
+            color: #333;
+            text-align: center;
+        }
+
+        p {
+            margin: 5px 0;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        li {
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+            margin: 10px auto;
+            padding: 15px;
+            max-width: 600px;
+        }
+
+        strong {
+            color: #444;
+        }
+
+        .no-result {
+            text-align: center;
+            color: #888;
+            font-style: italic;
+        }
+    </style>
+</head>
+<body>
+<h1>Livros Encontrados</h1>
+
+<!-- Verificando se existem livros para exibir -->
+<div th:if="${#lists.isEmpty(Livros)}" class="no-result">
+    <p>Nenhum livro encontrado para sua pesquisa.</p>
+</div>
+
+<!-- Exibindo os livros -->
+<div th:if="${!#lists.isEmpty(Livros)}">
+    <ul>
+        <li th:each="livro : ${Livros}">
+            <p><strong>Título:</strong> <span th:text="${livro.title}"></span></p>
+            <p><strong>Autor(es):</strong> <span th:text="${livro.author_name}"></span></p>
+            <p><strong>Ano de publicação:</strong> <span th:text="${livro.first_publish_year}"></span></p>
+        </li>
+    </ul>
+</div>
+</body>
+</html>
