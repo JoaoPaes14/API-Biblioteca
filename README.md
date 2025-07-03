@@ -49,7 +49,7 @@ openlibrary/
 1. Clone o repositório:
 
 ```bash
-git clone https://github.com/seu-usuario/OpenLibrary.git
+git clone https://github.com/joaopaes14/API-Biblioetca.git
 cd openlibrary
 ````
 
